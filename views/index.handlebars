@@ -1,0 +1,23 @@
+<div class="header">
+    <h1 class="text-center">
+        {{title}}
+    </h1>
+</div>
+<button type="button" class="btn newsy-btn" id="submit">
+    <h4>
+        <span class="glyphicon glyphicon-hand-right"></span> ---> Scrape! <--- 
+        <span class="glyphicon glyphicon-hand-left"></span>
+    </h4>
+</button>
+<div class="news articles">
+    <ul>
+        {{!-- loop through all new news returned by a scrape click --}}
+        {{#each news}}
+            <li>
+                <a href={{this.link}}>
+                    {{this.headline}}
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+</div>

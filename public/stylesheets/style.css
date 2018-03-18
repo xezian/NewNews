@@ -1,0 +1,32 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  font-family: OldeEnglish, 'Times New Roman', Times, serif;
+  font-size: 10vh;
+  line-height: 10vh;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.header {
+  border-bottom: 2px solid black;
+  height: 10vh;
+  width: 100%;
+}
+
+.newsy-btn {
+  margin: 2px;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+@font-face {
+  font-family: OldeEnglish;
+  src: url('../fonts/OldeEnglish.ttf');
+  font-weight: 400;
+}
