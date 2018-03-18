@@ -4,17 +4,18 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const index = require('./routes/index');
-const users = require('./routes/users');
+const headlines = require('./routes/headline');
 
-var app = express();
+const app = express();
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
 // uncomment after placing your favicon in /public
@@ -26,7 +27,18 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/headlines', headlines);
+
+ 
+// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
+const MONGODB_URI = process.env.MONGODB_URI ||
+'mongodb://localhost/mongoHeadLines';
+
+// Connect to the Mongo DB
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI, {
+  useMongoClient: true
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
