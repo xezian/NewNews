@@ -3,7 +3,7 @@
         {{title}}
     </h1>
 </div>
-<button type="button" class="btn newsy-btn" id="submit">
+<button type="button" class="btn newsy-btn" id="scrape">
     <h4>
         <span class="glyphicon glyphicon-hand-right"></span> ---> Scrape! <--- 
         <span class="glyphicon glyphicon-hand-left"></span>
@@ -17,6 +17,7 @@
                 <a href={{this.link}}>
                     {{this.headline}}
                 </a>
+                <p>{{this.blurb}}</p>
             </li>
         {{/each}}
     </ul>

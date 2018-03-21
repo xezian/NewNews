@@ -22,14 +22,17 @@ module.exports = (req, res) => {
             result.blurb = $(this)
                 .find('.summary')
                 .text();
-
+            if(!result.link || !result.title || !result.blurb) {
+                return;
+            }
             // Create a new Article using the `result` object built from scraping
             db.Article.create(result)
                 .then(function(article){
                 })
                 .catch(function(err){
                 // If an error occurred, send it to the client
-                return res.json(err);
+                console.log(err);
+                return;
             });
         });
         // If we were able to successfully scrape and save an Article, send a message to the client
